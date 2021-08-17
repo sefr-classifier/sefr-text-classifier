@@ -43,7 +43,7 @@ class SEFR:
         
         for i, text in enumerate(X.values):
             l = y[i]
-            for token in text[0].split():
+            for token in text.split():
                 if (l==1):
                     self.numpos += 1
                     if token in self.dpos:
@@ -79,10 +79,10 @@ class SEFR:
         for i, text in enumerate(X.values):
             l = y[i]
             if (l==1):
-                for token in text[0].split():
+                for token in text.split():
                     scorepos += self.dscore[token] 
             if (l==0):
-                for token in text[0].split():
+                for token in text.split():
                     scoreneg += self.dscore[token]
         scorepos /= self.numpos
         scoreneg /= self.numneg
@@ -106,7 +106,7 @@ class SEFR:
         
         for text in X.values:
             score = 0
-            for token in text[0].split():
+            for token in text.split():
                 if token in self.dscore:
                     score += self.dscore[token]
             if (score-self.bias > 0):
